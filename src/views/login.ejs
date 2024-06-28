@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogger</title>
+    <link rel="stylesheet" href="/styles/login.css">
+</head>
+
+<body>
+    <form action="/login" method="post">
+        <h1>Log in</h1>
+        <%- include("./messages/message.ejs") -%>
+        <div class="content">
+            <input type="email" name="email" id="email" required>
+            <span>email</span>
+        </div>
+        <div class="content">
+            <input type="password" name="password" id="password" required>
+            <span>password</span>
+        </div>
+        <input type="submit" value="Log in"><br>
+        <a href="/register" class="register">New in Blogger?</a>
+    </form>
+</body>
+
+</html>

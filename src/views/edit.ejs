@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogger</title>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/post.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="blockRequest">
+        <img src="/images/load-icon-png-7963.png" alt="Loading..." decoding="async">
+    </div>
+    <h1>Update your Blog</h1>
+    <form action="/user/edit?query=<%=blog._id%>" method="post">
+        <div class="content">
+            <textarea name="heading" id="heading">
+                <%=blog.heading%>
+            </textarea>
+            <span>heading</span>
+        </div>
+        <div id="editor-container"><%- blog.content%></div>
+        <input type="hidden" name="content" id="hidden-content">
+        <input type="submit" value="Update">
+    </form>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="/js/edit.js"></script>
+</body>
+
+</html>

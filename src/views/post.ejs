@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogger</title>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/post.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="blockRequest">
+        <img src="/images/load-icon-png-7963.png" alt="Loading..." decoding="async">
+    </div>
+    <h1>Create a blog</h1>
+    <form action="/post" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="file" accept="image/*" required>
+        <img id="image-preview" class="image-preview" alt="Image Preview" style="display:none;">
+        <div class="content">
+            <textarea name="heading" id="heading">
+            </textarea>
+            <span>heading</span>
+        </div>
+        <div id="editor-container"></div>
+        <input type="hidden" name="content" id="hidden-content">
+        <input type="submit" value="Post this Blog">
+    </form>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="/js/post.js" defer></script>
+</body>
+
+</html>

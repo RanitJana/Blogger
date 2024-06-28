@@ -1,0 +1,232 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    position: relative;
+}
+
+header {
+    background-color: rgb(255, 255, 255);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #ccc;
+    z-index: 10;
+}
+
+.left h1 {
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background: linear-gradient(#662D8C, #ED1E79);
+}
+
+.left h1:hover {
+    cursor: pointer;
+}
+
+.right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right .write {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+}
+
+.right .write:hover span {
+    border-bottom: 2px solid black;
+}
+
+.right .write img {
+    width: 1.5rem;
+    margin-right: 0.2rem;
+}
+
+.right>.user,
+.userImage {
+    border-radius: 50%;
+    background-color: gray;
+    height: 50px;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    padding: 0.3rem;
+    position: relative;
+}
+
+.right>.user>img,
+.userImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+main {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content {
+    max-width: 750px;
+    width: 100%;
+    /* padding: 2rem; */
+    /* background-color: rgba(204, 204, 204, 0.178); */
+}
+
+.content h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.owner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1.3rem 0;
+}
+
+.owner>.user {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    margin-right: 1rem;
+}
+
+.owner .user img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.owner .info .name {
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+.owner .info .name a {
+    color: rgb(97, 97, 97);
+}
+
+.owner .info .name a:hover {
+    cursor: pointer;
+}
+
+.owner .info .date {
+    color: rgb(97, 97, 97);
+}
+
+.coverImage {
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.coverImage img {
+    width: 100%;
+}
+
+.text {
+    margin-top: 3rem;
+}
+
+.text img {
+    width: 100%;
+    height: fit-content;
+}
+
+.end {
+    width: 100%;
+    padding: 2rem;
+    padding-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 3rem;
+}
+
+.ending {
+    height: 0.25rem;
+    width: 0.25rem;
+    background-color: black;
+    border-radius: 50%;
+    position: relative;
+}
+
+.ending::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50px;
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 50%;
+    background-color: black;
+}
+
+.ending::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50px;
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 50%;
+    background-color: black;
+}
+
+.contentPopularity {
+    /* background-color: orange; */
+    box-shadow: 1px 1px 5px 2px #ccc;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0.2rem 1rem;
+    gap: 1rem;
+}
+
+.contentPopularity>div:hover {
+    cursor: pointer;
+}
+
+.likes,
+.comment {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    height: 100%;
+    padding: 0.5rem;
+}
+
+.likes img,
+.comment img {
+    width: 1.2rem;
+}
+
+@media only screen and (max-width:470px) {
+    header .left h1 {
+        font-size: 1.2rem;
+    }
+}
+
+pre {
+    border-radius: 8px;
+}

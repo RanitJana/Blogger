@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogger</title>
+    <link rel="stylesheet" href="/styles/blog.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <header>
+        <div class="left">
+            <h1>Blogger</h1>
+        </div>
+        <div class="right">
+            <a href="/post" class="write">
+                <img src="/images/icons8-write-48.png" alt="write" decoding="async" title="write a blog">
+                <span>Write</span>
+            </a>
+            <a href="/user" class="user">
+                <img src="<%=avater%>" alt="user" title="user" decoding="async">
+            </a>
+        </div>
+    </header>
+    <main>
+        <div class="content">
+            <h1>
+                <%=blog.heading%>
+            </h1>
+            <div class="owner">
+                <a href="/login" class="user">
+                    <img src="<%=blog.user.avater%>" alt="user" title="user" decoding="async">
+                </a>
+                <div class="info">
+                    <div class="name">
+                        <a href="/user/writer?query=<%=blog.user._id%>">
+                            <%=blog.user.fullName%>
+                        </a>
+                    </div>
+                    <div class="date">
+                        <%=blog.formattedDate%>
+                    </div>
+                </div>
+            </div>
+            <div class="coverImage">
+                <img src="<%=blog.blogImage%>" alt="Cover Image" decoding="async">
+            </div>
+            <div class="text" style="white-space: pre-line;">
+                <%-blog.content%>
+            </div>
+            <div class="contentPopularity">
+                <div class="likes">
+                    <img src="/images/icons8-like-32.png" alt="likes" decoding="async">
+                    <span>1.1k</span>
+                </div>
+                <div class="comment">
+                    <img src="/images/icons8-comment-50.png" alt="comments" decoding="async">
+                    <span>67</span>
+                </div>
+            </div>
+            <div class="end">
+                <div class="ending"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="/js/blog.js"></script>
+</body>
+
+</html>

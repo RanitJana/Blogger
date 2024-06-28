@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogger</title>
+    <link rel="stylesheet" href="/styles/user.css">
+</head>
+
+<body>
+    <div class="blockRequest">
+        <img src="/images/load-icon-png-7963.png" alt="Loading..." decoding="async">
+    </div>
+    <div class="deletionSure">
+        <p>
+            <strong>
+                Do you want to <span style="color: red;">delete</span> the Blog?
+            </strong>
+        </p>
+        <div class="buttons">
+            <a href="" class='actualErase'>YES</a>
+            <a href="/user">NO</a>
+        </div>
+    </div>
+    <header>
+        <div class="left">
+            <h1>Blogger</h1>
+        </div>
+        <div class="right">
+            <a href="/post" class="write">
+                <img src="/images/icons8-write-48.png" alt="write" decoding="async" title="write a blog">
+                <span>Write</span>
+            </a>
+            <a href="/user" class="user">
+                <img src="<%=avater%>" alt="user" title="user" decoding="async">
+            </a>
+        </div>
+    </header>
+    <main>
+        <section>
+            <h1>Profile Information</h1>
+            <form action="/user" method="post" enctype="multipart/form-data">
+                <%- include("./messages/message.ejs") -%>
+                    <div class="imgContainer">
+                        <input type="file" name="file" id="file" accept="image/*">
+                        <img id="image-preview" class="image-preview" alt="Image Preview" src="<%=user.avater%>">
+                    </div>
+                    <div class=" content">
+                        <input type="text" name="fullName" id="fullName" required value="<%=user.fullName%>">
+                        <span>Full name</span>
+                    </div>
+                    <div class="content">
+                        <input type="email" name="email" id="email" required value="<%=user.email%>">
+                        <span>email</span>
+                    </div>
+                    <input type="submit" name="action" value="update" formaction="/user/update-user">
+                    <button class="logout" type="submit" name="action" value="logOut" formaction="/user/log-out">Log
+                        Out</button>
+            </form>
+        </section>
+        <section>
+            <h2>Your Blogs</h2>
+            <table>
+                <thead>
+                    <th>Content</th>
+                    <th>Options</th>
+                </thead>
+                <tbody>
+                    <%blogs.forEach(blog=>{%>
+                        <tr>
+                            <td>
+                                <%=blog.heading%>
+                            </td>
+                            <td class="options">
+                                <a class="edit" href="/user/edit?query=<%=blog._id%>">
+                                    <img src="/images/icons8-edit-96.png" alt="Edit" decoding="async">
+                                </a>
+                                <div class="delete" href="/user/delete?query=<%=blog._id%>">
+                                    <img src="/images/icons8-delete-96.png" alt="delete" decoding="async">
+                                </div>
+                            </td>
+                        </tr>
+                        <%})%>
+
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="/js/user.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+header {
+    background-color: rgb(255, 255, 255);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #ccc;
+    z-index: 10;
+}
+
+.left h1 {
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background: linear-gradient(#662D8C, #ED1E79);
+}
+
+.left h1:hover {
+    cursor: pointer;
+}
+
+.right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right .write {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+}
+
+.right .write:hover span {
+    border-bottom: 2px solid black;
+}
+
+.right .write img {
+    width: 1.5rem;
+    margin-right: 0.2rem;
+}
+
+@keyframes skeletonLoading {
+    0% {
+        background-color: hsl(0, 0%, 93%);
+    }
+
+    100% {
+        background-color: hsl(0, 0%, 76%);
+    }
+}
+
+.right>.user,
+.userImage {
+    border-radius: 50%;
+    height: 50px;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    padding: 0.3rem;
+    position: relative;
+    animation: skeletonLoading 1s linear alternate infinite;
+}
+
+.right>.user {
+    animation: none;
+}
+
+.right>.user>img,
+.userImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main>h1{
+    padding-top: 2rem;
+    max-width: 850px;
+    width: 100%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+main>h1 span{
+    color: purple;
+}
+
+.box {
+    border-bottom: 1px solid #ccc;
+    padding: 1rem;
+    margin-top: 1rem;
+    max-width: 850px;
+    width: 100%;
+    background-color: rgba(204, 204, 204, 0.178);
+}
+
+.box:last-child {
+    margin-bottom: 1rem;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.userImage {
+    width: 2.2rem;
+    height: 2.2rem;
+}
+
+.userName {
+    margin-left: 0.5rem;
+    font-weight: bold;
+    color: rgb(97, 97, 97);
+}
+
+.middle {
+    margin-left: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    margin: 1rem 0.2rem;
+}
+
+.middle .heading .top {
+    font-weight: bolder;
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+    color: black;
+}
+
+.middle .heading .bottom {
+    color: rgb(97, 97, 97);
+}
+
+.middle .contentImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    max-width: 200px;
+    border-radius: 2px;
+    animation: skeletonLoading 1s linear alternate;
+}
+
+.contentImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.box .info {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    color: rgb(72, 72, 72);
+    font-weight: bold;
+}
+
+.box .info img {
+    width: 1.2rem;
+    margin-left: 1rem;
+}
+
+.box .info>div {
+    gap: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.box>a {
+    text-decoration: none;
+}
+
+@media only screen and (max-width:687px) {
+    .middle {
+        flex-direction: column-reverse;
+    }
+}
+
+@media only screen and (max-width:470px) {
+    header .left h1 {
+        font-size: 1.2rem;
+    }
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogger</title>
+    <link rel="stylesheet" href="/styles/home.css">
+</head>
+
+<body>
+    <header>
+        <div class="left">
+            <h1>Blogger</h1>
+        </div>
+        <div class="right">
+            <a href="/post" class="write">
+                <img src="/images/icons8-write-48.png" alt="write" decoding="async" title="write a blog">
+                <span>Write</span>
+            </a>
+            <a href="/user" class="user">
+                <img src="<%=avater%>" alt="user" title="user" decoding="async">
+            </a>
+        </div>
+    </header>
+    <main>
+        <%blog.forEach(val=>{%>
+            <div class="box">
+                <div class="userInfo">
+                    <div class="userImage">
+                        <img src="<%=val.user.avater%>" alt="User" decoding="async">
+                    </div>
+                    <div class="userName">
+                        <a style="color: rgb(97,97,97);" href="/user/writer?query=<%=val.user._id%>">
+                            <%=val.user.fullName%>
+                        </a>
+                    </div>
+                </div>
+                <a href="/blog?query=<%=val._id%>">
+                    <div class="middle">
+                        <div class="heading">
+                            <div class="top">
+                                <%=val.heading%>
+                            </div>
+                            <div class="bottom">
+                                <%- val.content.slice(0,150)%><span>...</span>
+                            </div>
+                        </div>
+                        <div class="contentImage">
+                            <img src="<%=val.blogImage%>" alt="content" decoding="async">
+                        </div>
+                    </div>
+                    <div class="info">
+                        <div class="date">
+                            <%=val.formattedDate%>
+                        </div>
+                        <div class="likes">
+                            <img src="/images/icons8-like-32.png" alt="likes" decoding="async">
+                            <span>1.1k</span>
+                        </div>
+                        <div class="comments">
+                            <img src="/images/icons8-comment-50.png" alt="comment" decoding="async">
+                            <span>29</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <%})%>
+    </main>
+
+    <script>
+        document.querySelector("header .left h1").addEventListener("click", () => window.location.href = "/");
+    </script>
+</body>
+
+</html>

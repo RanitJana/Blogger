@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogger</title>
+    <link rel="stylesheet" href="/styles/register.css">
+</head>
+
+<body>
+    <form action="/register" method="post">
+        <h1>Register</h1>
+        <%- include("./messages/message.ejs") -%>
+        <div class="content">
+            <input type="text" name="fullName" required id="fullName">
+            <span>full name</span>
+        </div>
+        <div class="content">
+            <input type="text" name="userName" required id="userName">
+            <span>user name</span>
+        </div>
+        <div class="content">
+            <input type="email" name="email" id="email" required>
+            <span>email</span>
+        </div>
+        <div class="content">
+            <input type="password" name="password" id="password" required>
+            <span>password</span>
+        </div>
+        <div class="content">
+            <input type="password" name="confirmPassword" id="confirmPassword" required>
+            <span>confirm password</span>
+        </div>
+        <input type="submit" value="Register"><br>
+    </form>
+</body>
+
+</html>
