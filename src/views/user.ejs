@@ -54,7 +54,7 @@
                         <input type="email" name="email" id="email" required value="<%=user.email%>">
                         <span>email</span>
                     </div>
-                    <input type="submit" name="action" value="update" formaction="/user/update-user">
+                    <input type="submit" name="action" value="Update" formaction="/user/update-user">
                     <button class="logout" type="submit" name="action" value="logOut" formaction="/user/log-out">Log
                         Out</button>
             </form>
@@ -69,8 +69,10 @@
                 <tbody>
                     <%blogs.forEach(blog=>{%>
                         <tr>
-                            <td>
-                                <%=blog.heading%>
+                            <td style="font-weight: bold;">
+                                <a href="/blog?query=<%=blog._id%>">
+                                    <%=blog.heading%>
+                                </a>
                             </td>
                             <td class="options">
                                 <a class="edit" href="/user/edit?query=<%=blog._id%>">
