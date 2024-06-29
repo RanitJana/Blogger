@@ -253,7 +253,14 @@ ul {
 /* //comments */
 .commentArea {
     padding-top: 2rem;
-    display: none;
+    /* display: none; */
+}
+
+.commentArea>h3 {
+    background-color: #ccc;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-left: 5px solid gray;
 }
 
 .currentUserComment {
@@ -329,7 +336,7 @@ ul {
 }
 
 .userComment .userName {
-    font-weight: bold;
+    font-weight: bolder;
     margin-bottom: 1rem;
 }
 

@@ -22,18 +22,21 @@ const displayHome = async function (req, res) {
     let blog = await getAllRandomBlogs();
     let likes = await likeSchema.find();
 
-    blog.forEach(val => {
+    let tempBlogs = await Promise.all(blog.map(async (val) => {
         val.formattedDate = val.updatedAt.toLocaleDateString('en-US', {
             month: 'short', day: '2-digit', year: 'numeric'
         });
 
         let likeIndex = likes.findIndex(element => element.blog.toString() === val._id.toString());
+        val.likes = likes[likeIndex]?.likers?.length || 0;
 
-        val.likes = likes[likeIndex].likers?.length || 0;
+        let total = await commentSchema.countDocuments({ blog: val._id.toString() });
+        val.comments = total;
 
-    });
+        return val;
+    }));
 
-    res.locals.blog = blog;
+    res.locals.blog = tempBlogs;
 
     return res.render("home")
 }
@@ -94,22 +97,26 @@ const displayWriter = async function (req, res) {
 
         let likes = await likeSchema.find();
 
-        blogs.forEach(val => {
-
+        let tempBlogs = await Promise.all(blogs.map(async (val) => {
             val.formattedDate = val.updatedAt.toLocaleDateString('en-US', {
                 month: 'short', day: '2-digit', year: 'numeric'
             });
 
             let likeIndex = likes.findIndex(element => element.blog.toString() === val._id.toString());
+            val.likes = likes[likeIndex]?.likers?.length || 0;
 
-            val.likes = likes[likeIndex].likers?.length || 0;
-        });
+            let total = await commentSchema.countDocuments({ blog: val._id.toString() });
+            val.comments = total;
 
-        res.locals.blogs = blogs;
+            return val;
+        }));
+
+        res.locals.blogs = tempBlogs;
 
         return res.render("writer");
 
     } catch (error) {
+        console.log(error);
         return res.redirect("/");
     }
 }

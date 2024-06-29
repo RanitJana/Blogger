@@ -86,9 +86,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             document.querySelector(".comment span").innerHTML = Number(document.querySelector(".comment span").textContent) + 1;
 
+            document.querySelector(".TEMP").style.display = "none";
 
         } catch (error) {
-            return window.location.href = "/login";
         }
     })
 
@@ -138,6 +138,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         allComments.appendChild(newNode);
     })
+
+    if (dataArr.length == 0) {
+        let newNode = document.createElement('span')
+        newNode.innerText = "No comments";
+        newNode.classList.add("TEMP");
+        newNode.style.marginLeft = "1rem";
+        commentContent.appendChild(newNode);
+    }
 
     document.querySelector(".comment span").innerHTML = dataArr.length;
 
