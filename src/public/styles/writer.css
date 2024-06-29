@@ -3,6 +3,8 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
 }
 
 body {
@@ -100,14 +102,15 @@ main {
     align-items: center;
 }
 
-main>h1{
+main>h1 {
     padding-top: 2rem;
     padding-left: 1rem;
     max-width: 850px;
     width: 100%;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
-main>h1 span{
+
+main>h1 span {
     color: purple;
 }
 

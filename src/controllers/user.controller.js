@@ -179,15 +179,15 @@ const updateProfile = async function (req, res) {
     try {
         const { fullName, email } = req.body;
 
+        const decoded = await jwt.verify(req.cookies?.accessToken, process.env.ACCESS_TOKEN_SECRET);
+
         let user = await userSchema.findOne({ email: email });
 
-        if (user) {
+        if (user && (user._id != decoded._id)) {
 
             req.flash("fail", `${user.email} is already registerd by another user`);
             return res.redirect("/user");
         }
-
-        const decoded = await jwt.verify(req.cookies?.accessToken, process.env.ACCESS_TOKEN_SECRET);
 
         user = await userSchema.findOne({ email: decoded.email });
 

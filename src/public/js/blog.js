@@ -175,10 +175,10 @@ more.addEventListener("click", async function () {
 })
 
 
-document.querySelector(".comment").addEventListener("click", async () => {
+// document.querySelector(".comment").addEventListener("click", async () => {
 
-    commentContent.classList.toggle("show");
-})
+//     commentContent.classList.toggle("show");
+// })
 
 function resize(element) {
     element.style.height = 'auto'; 
