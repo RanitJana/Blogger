@@ -28,6 +28,7 @@ header {
     padding: 0.5rem 1rem;
     border-radius: 20px;
     background: linear-gradient(#662D8C, #ED1E79);
+    font-size: 1.2rem;
 }
 
 .left h1:hover {
@@ -194,11 +195,5 @@ main {
 @media only screen and (max-width:687px) {
     .middle {
         flex-direction: column-reverse;
-    }
-}
-
-@media only screen and (max-width:470px) {
-    header .left h1 {
-        font-size: 1.2rem;
     }
 }

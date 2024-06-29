@@ -28,27 +28,7 @@ const validUser = async function (req, res, next) {
     return next();
 }
 
-const validUniqueEmail = async function (req, res, next) {
-    
-    const { email } = req.body;
-
-    try {
-
-        const user = await userSchema.findOne({ email: email });
-
-        if (!user) return next();
-
-        req.flash("fail", `${user.email} is already registerd by another user`);
-        return res.redirect("/user");
-
-    }
-    catch (err) {
-        req.flash("fail", "An error occurred!!");
-        return res.redirect("/user");
-    }
-}
 
 module.exports = {
-    validUser,
-    validUniqueEmail
+    validUser
 }

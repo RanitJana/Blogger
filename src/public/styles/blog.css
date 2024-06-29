@@ -27,6 +27,7 @@ header {
     padding: 0.5rem 1rem;
     border-radius: 20px;
     background: linear-gradient(#662D8C, #ED1E79);
+    font-size: 1.2rem;
 }
 
 .left h1:hover {
@@ -200,6 +201,7 @@ main {
     align-items: center;
     padding: 0.2rem 1rem;
     gap: 1rem;
+    margin-top: 1rem;
 }
 
 .contentPopularity div {
@@ -253,7 +255,7 @@ ul {
 /* //comments */
 .commentArea {
     padding-top: 2rem;
-    /* display: none; */
+    display: none;
 }
 
 .commentArea>h3 {

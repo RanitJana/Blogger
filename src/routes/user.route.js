@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const upload = require("../utils/multer.js");
 
-const { validUser, validUniqueEmail } = require("../middlewares/auth.middleware.js");
+const { validUser } = require("../middlewares/auth.middleware.js");
 const { updateProfile, displayProfile, userLogOut } = require("../controllers/user.controller.js");
 
 const edit = require("./edit.route.js");
@@ -28,7 +28,7 @@ router
         }
         return res.redirect("/login");
     })
-    .post("/update-user", validUser, validUniqueEmail, upload.single("file"), updateProfile)
+    .post("/update-user", upload.single("file"), updateProfile)
     .post("/log-out", validUser, userLogOut)
 
 module.exports = router;
