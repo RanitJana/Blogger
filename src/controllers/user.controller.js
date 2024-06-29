@@ -313,7 +313,9 @@ const likeContent = async function (req, res, next) {
 
         req.flash("fail", "You need to login first");
 
-        return res.redirect("/login");
+        return res.status(401).json({
+            message: "login first"
+        });
     }
 
     try {
@@ -326,7 +328,9 @@ const likeContent = async function (req, res, next) {
 
             req.flash("fail", "Invalid user. Please log in again");
 
-            return res.redirect("/login");
+            return res.status(401).json({
+                message: "Invalid user. Please log in again"
+            });
         }
 
         const myUrl = url.parse(req.url);
@@ -347,14 +351,36 @@ const likeContent = async function (req, res, next) {
 
         like.save({ validateBeforeSave: false });
 
-        return res.redirect(`/blog?query=${blogId}`);
+
+        let likeImgHref = "/images/icons8-like-32.png";
+
+        if (like.likers) {
+
+            try {
+
+                const token = req.cookies?.accessToken || req.header["Authentication"]?.replace("Bearer ", "");
+                const decoded = await jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+
+                like.likers.forEach(val => {
+                    if (val.toString() === decoded._id) likeImgHref = "/images/icons8-like-24.png";
+                })
+            }
+            catch (err) { }
+        }
+
+        return res.status(200).json({
+            totalLikes: like.likers.length,
+            likeImgHref
+        })
 
     }
     catch (err) {
         console.log(`An error occurred : ${err}`);
     }
 
-    return res.redirect("/");
+    return res.status(500).json({
+        message: "Server problem"
+    });
 }
 
 module.exports = {

@@ -52,20 +52,19 @@
                 <%- blog.content %>
             </div>
             <div class="contentPopularity">
-                <a href="/blog/like?query=<%=blog._id%>" class="likes">
+                <div class="likes">
                     <img src="<%=blog.likeImgHref%>" alt="likes" decoding="async">
                     <span>
                         <%=blog.likes%>
                     </span>
-                </a>
-                <a href="" class="comment">
+                </div>
+                <div href="" class="comment">
                     <img src="/images/icons8-comment-50.png" alt="comments" decoding="async">
                     <span>67</span>
-                </a>
+                </div>
             </div>
 
             <div class="commentArea">
-
             </div>
 
             <div class="end">
@@ -76,7 +75,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-    <script src="/js/blog.js"></script>
+    <script id="custom-script" URL="/blog/like?query=<%=blog._id%>" src="/js/blog.js"></script>
 </body>
 
 </html>

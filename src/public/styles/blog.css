@@ -194,7 +194,6 @@ main {
 }
 
 .contentPopularity {
-    /* background-color: orange; */
     box-shadow: 1px 1px 5px 2px #ccc;
     border-radius: 10px;
     display: flex;
@@ -203,12 +202,12 @@ main {
     gap: 1rem;
 }
 
-.contentPopularity a {
+.contentPopularity div {
     text-decoration: none;
     color: black;
 }
 
-.contentPopularity>a:hover {
+.contentPopularity>div:hover {
     cursor: pointer;
 }
 

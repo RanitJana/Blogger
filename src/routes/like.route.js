@@ -4,6 +4,6 @@ const router = express.Router();
 const { likeContent } = require("../controllers/user.controller.js");
 
 router
-    .get("/", likeContent)
+    .post("/", likeContent)
 
 module.exports = router;
