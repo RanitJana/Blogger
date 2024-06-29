@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const flash = require("connect-flash");
 const jwt = require("jsonwebtoken");
+const cors = require("cors");
 
 //basic configuration
 app.use(express.static(path.join(__dirname, "./public")));
@@ -18,6 +19,8 @@ app.use(session({
     secret: process.env.SESSION_SECRET
 }));
 app.use(flash());
+app.use(cors());
+app.use(express.json({ limit: "20kb" }))
 
 // A middleware to use fail and success msg to display
 

@@ -1,6 +1,7 @@
 const userSchema = require("../models/user.model.js");
 const blogSchema = require("../models/blog.model.js");
 const likeSchema = require("../models/like.model.js");
+const commentSchema = require("../models/comment.model.js");
 
 const { uploadAvater, uploadCoverImage, deleteImage } = require("../utils/cloudinary.js");
 
@@ -383,6 +384,58 @@ const likeContent = async function (req, res, next) {
     });
 }
 
+const commentContent = async function (req, res, next) {
+
+    const mainComment = req.body.mainComment;
+
+    let token = req.cookies?.accessToken || req.header["Authentication"]?.replace("Bearer ", "");
+
+    if (!token) {
+        req.flash("fail", "You nedd to log in first to comment")
+        return res.status(401).json({
+            message: "Log in"
+        })
+    }
+
+    const decoded = await jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+
+    if (!decoded) return res.status(401).json({
+        message: "Invalid user. Please log in again"
+    });
+
+    try {
+
+        let user = await userSchema.findById(decoded._id);
+
+        const myUrl = url.parse(req.url);
+
+        const blogId = myUrl.query.replace("query=", "");
+
+        let comment = await commentSchema.create({
+            user: user._id,
+            blog: blogId,
+            content: mainComment
+        });
+
+        let dateTime = comment.updatedAt.toLocaleDateString('en-US', {
+            month: 'short', day: '2-digit', year: 'numeric'
+        });
+
+        return res.status(200).json({
+            userAvater: user.avater,
+            userName: user.fullName,
+            comment: mainComment,
+            date: dateTime
+        })
+
+    } catch (error) {
+        console.log(error);
+    }
+    return res.status(500).json({
+        message: "Server Error"
+    });
+}
+
 module.exports = {
     userLogin,
     userRegister,
@@ -392,5 +445,6 @@ module.exports = {
     userLogOut,
     editContent,
     deleteContent,
-    likeContent
+    likeContent,
+    commentContent
 }

@@ -249,3 +249,91 @@ ul {
     padding-left: 50px;
     margin: 10px 0;
 }
+
+/* //comments */
+.commentArea {
+    padding-top: 2rem;
+    display: none;
+}
+
+.currentUserComment {
+    width: 100%;
+    max-height: 5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.currentUserComment textarea {
+    outline: none;
+    height: 5rem;
+    width: 100%;
+    resize: none;
+    padding: 1rem;
+    border: 3px solid #969696;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.currentUserComment textarea:focus,
+.currentUserComment textarea:user-valid {
+    border-color: skyblue;
+}
+
+.currentUserComment .send {
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 5px 1px #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    width: 4rem;
+    height: 3rem;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+
+.currentUserComment .send:active {
+    box-shadow: none;
+}
+
+.currentUserComment .send:hover {
+    cursor: pointer;
+}
+
+.currentUserComment .send img {
+    width: 2rem;
+}
+
+.allComments {
+    display: block;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 0.5rem;
+}
+
+.singleComment {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.userDetails .userImage img {
+    background-color: #ccc;
+}
+
+.userComment {
+    background-color: #ebebeb;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.userComment .userName {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.show {
+    display: flex;
+    flex-direction: column;
+}

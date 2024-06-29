@@ -1,6 +1,7 @@
 const blogSchema = require("../models/blog.model.js");
 const userSchema = require("../models/user.model.js");
 const likeSchema = require("../models/like.model.js");
+const commentSchema = require("../models/comment.model.js");
 
 const url = require("url");
 const jwt = require("jsonwebtoken");
@@ -113,8 +114,39 @@ const displayWriter = async function (req, res) {
     }
 }
 
+const sendComments = async function (req, res) {
+
+    try {
+
+        let myUrl = url.parse(req.url);
+
+        let blogId = myUrl.query.replace("query=", "");
+
+        let allComment = await commentSchema.find({ blog: blogId }).populate("user");
+
+        let newArray = allComment.map(val => {
+            return {
+                comment: val.content,
+                userAvater: val.user.avater,
+                userName: val.user.fullName
+            }
+
+        })
+
+        return res.status(200).json({ newArray });
+
+    } catch (error) {
+        console.log(error);
+    }
+    return res.status(500).json({
+        messagge: "Server error"
+    })
+
+}
+
 module.exports = {
     displayHome,
     displayBlog,
-    displayWriter
+    displayWriter,
+    sendComments
 }
