@@ -9,8 +9,6 @@
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Environment Variables](#environment-variables)
 - [Scripts](#scripts)
 - [Dependencies](#dependencies)
 - [Technology Used](#technology-used)
