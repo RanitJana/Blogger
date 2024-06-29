@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blogger</title>
     <link rel="stylesheet" href="/styles/user.css">
+    <link rel="shortcut icon" href="/images/blogger.png" type="image/x-icon">
 </head>
 
 <body>
@@ -69,36 +70,36 @@
                         <th>Options</th>
                     </thead>
                     <tbody>
-                    <%blogs.forEach(blog=>{%>
-                        <tr>
-                            <td style="font-weight: bold;">
-                                <a href="/blog?query=<%=blog._id%>">
-                                    <%=blog.heading%>
-                                </a>
-                            </td>
-                            <td class="options">
-                                <a class="edit" href="/user/edit?query=<%=blog._id%>">
-                                    <img src="/images/icons8-edit-96.png" alt="Edit" decoding="async">
-                                </a>
-                                <div class="delete" href="/user/delete?query=<%=blog._id%>">
-                                    <img src="/images/icons8-delete-96.png" alt="delete" decoding="async">
-                                </div>
-                            </td>
-                        </tr>
-                        <%})%>
-                        
+                        <%blogs.forEach(blog=>{%>
+                            <tr>
+                                <td style="font-weight: bold;">
+                                    <a href="/blog?query=<%=blog._id%>">
+                                        <%=blog.heading%>
+                                    </a>
+                                </td>
+                                <td class="options">
+                                    <a class="edit" href="/user/edit?query=<%=blog._id%>">
+                                        <img src="/images/icons8-edit-96.png" alt="Edit" decoding="async">
+                                    </a>
+                                    <div class="delete" href="/user/delete?query=<%=blog._id%>">
+                                        <img src="/images/icons8-delete-96.png" alt="delete" decoding="async">
+                                    </div>
+                                </td>
+                            </tr>
+                            <%})%>
+
                     </tbody>
                 </table>
-            <%}else{%>
-                <p class="empty">
-                    EMPTY!!
-                    <span>
-                        <a href="/post">
-                            Write a Blog!!
-                        </a>
-                    </span>
-                </p>
-            <%}%>
+                <%}else{%>
+                    <p class="empty">
+                        EMPTY!!
+                        <span>
+                            <a href="/post">
+                                Write a Blog!!
+                            </a>
+                        </span>
+                    </p>
+                    <%}%>
         </section>
     </main>
 
