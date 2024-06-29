@@ -5,6 +5,8 @@ document.querySelectorAll('pre').forEach((block) => {
     Prism.highlightElement(block);
 });
 
+let more = document.querySelector(".more");
+
 document.addEventListener("DOMContentLoaded", function () {
 
     //like 
@@ -97,7 +99,9 @@ document.addEventListener("DOMContentLoaded", function () {
 let fetchComment = true;
 let commentContent = document.querySelector(".commentArea");
 
-document.addEventListener("DOMContentLoaded", async function () {
+let idx = 0;
+
+async function addComments() {
 
     let script = document.getElementById('custom-script');
 
@@ -116,7 +120,11 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     let allComments = document.querySelector(".allComments");
 
-    dataArr.forEach(data => {
+    let limit = idx + 10;
+
+    for (let i = idx; i < Math.min(limit, dataArr.length); i++, idx++) {
+
+        let data = dataArr[i];
 
         let HTML =
             `
@@ -137,7 +145,13 @@ document.addEventListener("DOMContentLoaded", async function () {
         newNode.innerHTML = HTML;
 
         allComments.appendChild(newNode);
-    })
+    }
+    if (limit >= dataArr.length) {
+        more.style.display = "none";
+    }
+    else if (dataArr.length > 10) {
+        more.style.display = "block";
+    }
 
     if (dataArr.length == 0) {
         let newNode = document.createElement('span')
@@ -149,6 +163,15 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     document.querySelector(".comment span").innerHTML = dataArr.length;
 
+}
+
+document.addEventListener("DOMContentLoaded", async function () {
+    await addComments();
+})
+
+
+more.addEventListener("click", async function () {
+    await addComments();
 })
 
 
@@ -156,3 +179,15 @@ document.querySelector(".comment").addEventListener("click", async () => {
 
     commentContent.classList.toggle("show");
 })
+
+function resize(element) {
+    element.style.height = 'auto'; 
+    element.style.height = element.scrollHeight + 'px';
+}
+
+let textarea = document.querySelector("textarea");
+
+textarea.addEventListener('input', () => {
+    resize(textarea);
+})
+

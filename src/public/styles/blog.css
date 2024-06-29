@@ -147,6 +147,8 @@ main {
 
 .text {
     margin-top: 3rem;
+    line-height: 2rem;
+    font-size: 1.2rem;
 }
 
 .text img {
@@ -267,7 +269,7 @@ ul {
 
 .currentUserComment {
     width: 100%;
-    max-height: 5rem;
+    /* max-height: 5rem; */
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -275,13 +277,13 @@ ul {
 
 .currentUserComment textarea {
     outline: none;
-    height: 5rem;
+    height: 3rem;
     width: 100%;
     resize: none;
     padding: 1rem;
-    border: 3px solid #969696;
-    border-top-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border: 2px solid #969696;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .currentUserComment textarea:focus,
@@ -333,16 +335,46 @@ ul {
 
 .userComment {
     background-color: #ebebeb;
-    padding: 1rem;
+    padding: 0.5em;
     border-radius: 8px;
+    max-width: 100%;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow-wrap: anywhere;
 }
 
 .userComment .userName {
     font-weight: bolder;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.userComment span {
+    background-color: white;
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    height: fit-content;
 }
 
 .show {
     display: flex;
     flex-direction: column;
+}
+
+.more {
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 1px 1px 5px 1px gray;
+    display: none;
+}
+
+.more:hover {
+    cursor: pointer;
+}
+
+.more:active {
+    background-color: #f6f6f6;
+    scale: 0.98;
 }
