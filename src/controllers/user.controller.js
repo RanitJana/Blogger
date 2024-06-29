@@ -1,7 +1,10 @@
 const userSchema = require("../models/user.model.js");
 const blogSchema = require("../models/blog.model.js");
-const url = require("url");
+const likeSchema = require("../models/like.model.js");
+
 const { uploadAvater, uploadCoverImage, deleteImage } = require("../utils/cloudinary.js");
+
+const url = require("url");
 const jwt = require("jsonwebtoken");
 const path = require("path");
 const fs = require("fs");
@@ -64,6 +67,7 @@ const userLogin = async function (req, res) {
     }
 
 }
+
 const userRegister = async function (req, res) {
     try {
 
@@ -155,6 +159,10 @@ const postBlog = async function (req, res) {
             content: content,
             blogImage: uploadCoverImageLink.url,
             heading: heading
+        })
+
+        const like = await likeSchema.create({
+            blog: blog._id
         })
 
         return res.redirect('/');
@@ -280,6 +288,8 @@ const deleteContent = async function (req, res, next) {
 
         await blogSchema.deleteOne({ _id: blogId });
 
+        await likeSchema.deleteOne({ blog: blogId });
+
         req.flash("success", "Blog deleted successfully");
 
 
@@ -295,6 +305,58 @@ const deleteContent = async function (req, res, next) {
 
 }
 
+const likeContent = async function (req, res, next) {
+
+    const token = req.cookies?.accessToken || req.header["Authentication"]?.replace("Bearer ", "");
+
+    if (!token) {
+
+        req.flash("fail", "You need to login first");
+
+        return res.redirect("/login");
+    }
+
+    try {
+
+        const decoded = await jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+
+        let user = await userSchema.findById(decoded._id);
+
+        if (!user) {
+
+            req.flash("fail", "Invalid user. Please log in again");
+
+            return res.redirect("/login");
+        }
+
+        const myUrl = url.parse(req.url);
+
+        const blogId = myUrl.query.replace("query=", "");
+
+        const like = await likeSchema.findOne({ blog: blogId });
+
+        if (!like) return res.redirect("/");
+
+
+        let index = like.likers.indexOf(user._id);
+
+        if (index === -1) like.likers.push(user._id);
+
+        else like.likers.splice(index, 1);
+
+
+        like.save({ validateBeforeSave: false });
+
+        return res.redirect(`/blog?query=${blogId}`);
+
+    }
+    catch (err) {
+        console.log(`An error occurred : ${err}`);
+    }
+
+    return res.redirect("/");
+}
+
 module.exports = {
     userLogin,
     userRegister,
@@ -303,5 +365,6 @@ module.exports = {
     displayProfile,
     userLogOut,
     editContent,
-    deleteContent
+    deleteContent,
+    likeContent
 }

@@ -61,12 +61,14 @@
         </section>
         <section>
             <h2>Your Blogs</h2>
-            <table>
-                <thead>
-                    <th>Content</th>
-                    <th>Options</th>
-                </thead>
-                <tbody>
+            <%if(blogs.length>0){%>
+
+                <table>
+                    <thead>
+                        <th>Content</th>
+                        <th>Options</th>
+                    </thead>
+                    <tbody>
                     <%blogs.forEach(blog=>{%>
                         <tr>
                             <td style="font-weight: bold;">
@@ -84,9 +86,19 @@
                             </td>
                         </tr>
                         <%})%>
-
-                </tbody>
-            </table>
+                        
+                    </tbody>
+                </table>
+            <%}else{%>
+                <p class="empty">
+                    EMPTY!!
+                    <span>
+                        <a href="/post">
+                            Write a Blog!!
+                        </a>
+                    </span>
+                </p>
+            <%}%>
         </section>
     </main>
 

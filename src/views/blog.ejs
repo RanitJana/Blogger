@@ -49,18 +49,25 @@
                 <img src="<%=blog.blogImage%>" alt="Cover Image" decoding="async">
             </div>
             <div class="text" style="white-space: pre-line;">
-                <%-blog.content%>
+                <%- blog.content %>
             </div>
             <div class="contentPopularity">
-                <div class="likes">
-                    <img src="/images/icons8-like-32.png" alt="likes" decoding="async">
-                    <span>1.1k</span>
-                </div>
-                <div class="comment">
+                <a href="/blog/like?query=<%=blog._id%>" class="likes">
+                    <img src="<%=blog.likeImgHref%>" alt="likes" decoding="async">
+                    <span>
+                        <%=blog.likes%>
+                    </span>
+                </a>
+                <a href="" class="comment">
                     <img src="/images/icons8-comment-50.png" alt="comments" decoding="async">
                     <span>67</span>
-                </div>
+                </a>
             </div>
+
+            <div class="commentArea">
+
+            </div>
+
             <div class="end">
                 <div class="ending"></div>
             </div>

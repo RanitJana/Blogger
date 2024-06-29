@@ -59,7 +59,7 @@ header {
 .right>.user,
 .userImage {
     border-radius: 50%;
-    background-color: gray;
+    /* background-color: gray; */
     height: 50px;
     aspect-ratio: 1/1;
     overflow: hidden;
@@ -203,7 +203,12 @@ main {
     gap: 1rem;
 }
 
-.contentPopularity>div:hover {
+.contentPopularity a {
+    text-decoration: none;
+    color: black;
+}
+
+.contentPopularity>a:hover {
     cursor: pointer;
 }
 

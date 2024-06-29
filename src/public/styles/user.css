@@ -379,6 +379,19 @@ th {
     animation: rotation 2s linear infinite;
 }
 
+.empty {
+    max-width: 530px;
+    background-color: #e7e7e7;
+    width: 100%;
+    border-left: 5px solid gray;
+    padding: 1rem;
+    font-weight: bold;
+}
+
+.empty span {
+    text-transform: lowercase;
+}
+
 @keyframes rotation {
     0% {
         transform: rotate(0%);
