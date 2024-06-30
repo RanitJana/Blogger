@@ -7,6 +7,13 @@
     <title>Blogger</title>
     <link rel="stylesheet" href="/styles/register.css">
     <link rel="shortcut icon" href="/images/blogger.png" type="image/x-icon">
+    <script>
+        // Immediately set theme based on localStorage
+        (function () {
+            const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
 </head>
 
 <body>

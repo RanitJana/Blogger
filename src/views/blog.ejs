@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="/styles/blog.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <link rel="shortcut icon" href="/images/blogger.png" type="image/x-icon">
+    <script>
+        // Immediately set theme based on localStorage
+        (function () {
+            const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
 
 </head>
 
@@ -21,6 +28,9 @@
                 <img src="/images/icons8-write-48.png" alt="write" decoding="async" title="write a blog">
                 <span>Write</span>
             </a>
+            <div class="mode">
+                <img src="/images/icons8-dark-mode-100.png" decoding="async" alt="mode">
+            </div>
             <a href="/user" class="user">
                 <img src="<%=avater%>" alt="user" title="user" decoding="async">
             </a>

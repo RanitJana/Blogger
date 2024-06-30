@@ -7,6 +7,34 @@
     overflow-wrap: anywhere;
 }
 
+[data-theme="light"] {
+    --header-color: white;
+    --box-color: rgba(204, 204, 204, 0.178);
+    --box-border-bottom: 1px solid #ccc;
+    --body-color: white;
+    --header-border-bottom: 5px solid #ccc;
+    --invert: invert(0%);
+    --username: rgb(97, 97, 97);
+    --h1: black;
+    --input-border: 3px solid #ccc;
+    --content-color: white;
+}
+
+
+[data-theme="dark"] {
+
+    --header-color: #1E1E1E;
+    --box-color: #1E1E1E;
+    --box-border-bottom: none;
+    --body-color: #121212;
+    --header-border-bottom: 5px solid #121212;
+    --invert: invert(100%);
+    --username: rgb(142, 142, 142);
+    --h1: white;
+    --input-border: none;
+    --content-color: #1E1E1E;
+}
+
 body {
     min-height: 100dvh;
     padding: 1rem;
@@ -14,6 +42,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: var(--body-color);
 }
 
 
@@ -51,7 +80,7 @@ form {
     top: 0;
     transform: translateY(-50%);
     left: 10px;
-    background-color: white;
+    background-color: var(--content-color);
     padding: 0 0.3rem;
     color: rgb(136, 136, 136);
 }
@@ -76,8 +105,10 @@ input[type="text"] {
     border-radius: 5px;
     outline: none;
     padding: 0.5rem 1rem;
-    border: 3px solid #ccc;
+    border: var(--input-border);
     width: 100%;
+    background-color: var(--header-color);
+    color: var(--h1);
 }
 
 input[type="text"]:focus,
@@ -107,11 +138,11 @@ input[type="submit"]:hover {
 
 input[type="file"] {
     padding: 10px;
-    border: 3px solid #ccc;
+    border: var(--input-border);
     border-radius: 5px;
-    background-color: white;
+    background-color: var(--header-color);
     font-size: 16px;
-    color: #343a40;
+    color: var(--h1);
     cursor: pointer;
     width: 100%;
 }
@@ -137,6 +168,7 @@ input[type="file"] {
     width: 100%;
     border: 3px solid #ccc;
     border-bottom: none;
+    background-color: white;
 }
 
 .blockRequest {

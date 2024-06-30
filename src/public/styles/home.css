@@ -7,13 +7,44 @@
     overflow-wrap: anywhere;
 }
 
+[data-theme="light"] {
+    --header-color: white;
+    --box-color: rgba(204, 204, 204, 0.178);
+    --box-border-bottom: 1px solid #ccc;
+    --body-color: white;
+    --header-border-bottom: 5px solid #ccc;
+    --invert: invert(0%);
+    --username: rgb(97, 97, 97);
+    --h1: black;
+    --like-comment: rgb(97, 97, 97);
+}
+
+
+[data-theme="dark"] {
+
+    --header-color: #1E1E1E;
+    --box-color: #1E1E1E;
+    --box-border-bottom: none;
+    --body-color: #121212;
+    --header-border-bottom: 5px solid #121212;
+    --invert: invert(100%);
+    --username: rgb(142, 142, 142);
+    --h1: white;
+    --like-comment: rgb(235, 235, 235);
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 body {
     position: relative;
     overflow-x: hidden;
+    background-color: var(--body-color);
 }
 
 header {
-    background-color: rgb(255, 255, 255);
+    background-color: var(--header-color);
     position: sticky;
     top: 0;
     width: 100%;
@@ -21,7 +52,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    border-bottom: 1px solid #ccc;
+    border-bottom: var(--header-border-bottom);
     z-index: 10;
 }
 
@@ -48,7 +79,8 @@ header {
     color: black;
     display: flex;
     align-items: center;
-    margin-right: 2rem;
+    margin-right: 1rem;
+    filter: var(--invert);
 }
 
 .right .write:hover span {
@@ -103,12 +135,12 @@ main {
 }
 
 .box {
-    border-bottom: 1px solid #ccc;
+    border-bottom: var(--box-border-bottom);
     padding: 1rem;
     margin-top: 1rem;
     max-width: 850px;
     width: 100%;
-    background-color: rgba(204, 204, 204, 0.178);
+    background-color: var(--box-color);
 }
 
 .box:last-child {
@@ -129,7 +161,11 @@ main {
 .userName {
     margin-left: 0.5rem;
     font-weight: bold;
-    color: rgb(97, 97, 97);
+}
+
+.userName a {
+    color: var(--username);
+    text-decoration: none;
 }
 
 .middle {
@@ -145,11 +181,11 @@ main {
     font-weight: bolder;
     font-size: 1.75rem;
     margin-bottom: 1.2rem;
-    color: black;
+    color: var(--h1);
 }
 
 .middle .heading .bottom {
-    color: rgb(97, 97, 97);
+    color: var(--username);
 }
 
 .middle .contentImage {
@@ -175,19 +211,24 @@ main {
     align-items: center;
     justify-content: flex-start;
     gap: 1rem;
-    color: rgb(72, 72, 72);
+    color: var(--username);
     font-weight: bold;
 }
 
 .box .info img {
     width: 1.2rem;
     margin-left: 1rem;
+    filter: var(--invert);
 }
 
 .box .info>div {
     gap: 0.5rem;
     display: flex;
     align-items: center;
+}
+
+.info>div {
+    color: var(--like-comment);
 }
 
 .box>a {
@@ -198,4 +239,25 @@ main {
     .middle {
         flex-direction: column-reverse;
     }
+}
+
+.mode img {
+    width: 2rem;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.mode {
+    width: 3rem;
+    border-radius: 20px;
+    height: 2.2rem;
+    padding: 0.5rem;
+    margin-right: 1rem;
+    border: 2px solid black;
+    filter: var(--invert);
+}
+
+.mode:hover {
+    cursor: pointer;
 }

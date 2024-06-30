@@ -7,12 +7,52 @@
     overflow-wrap: anywhere;
 }
 
+[data-theme="light"] {
+    --header-color: white;
+    --box-color: rgba(204, 204, 204, 0.178);
+    --box-border-bottom: 1px solid #ccc;
+    --body-color: white;
+    --header-border-bottom: 5px solid #ccc;
+    --invert: invert(0%);
+    --username: rgb(97, 97, 97);
+    --h1: black;
+    --like-comment: rgb(97, 97, 97);
+    --input-content: white;
+    --image-preview-border-color: #adadad;
+    --table-border: 1px solid gray;
+    --table-a-color: purple;
+}
+
+
+[data-theme="dark"] {
+
+    --header-color: #1E1E1E;
+    --box-color: #1E1E1E;
+    --box-border-bottom: none;
+    --body-color: #121212;
+    --header-border-bottom: 5px solid #121212;
+    --invert: invert(100%);
+    --username: rgb(142, 142, 142);
+    --h1: white;
+    --like-comment: rgb(235, 235, 235);
+    --input-content: black;
+    --image-preview-border-color: #494949;
+    --table-border: 1px solid rgb(255, 255, 255);
+    --table-a-color: white;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 body {
     position: relative;
+    overflow-x: hidden;
+    background-color: var(--body-color);
 }
 
 header {
-    background-color: rgb(255, 255, 255);
+    background-color: var(--header-color);
     position: sticky;
     top: 0;
     width: 100%;
@@ -20,7 +60,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    border-bottom: 1px solid #ccc;
+    border-bottom: var(--header-border-bottom);
     z-index: 10;
 }
 
@@ -47,7 +87,8 @@ header {
     color: black;
     display: flex;
     align-items: center;
-    margin-right: 2rem;
+    margin-right: 1rem;
+    filter: var(--invert);
 }
 
 .right .write:hover span {
@@ -59,15 +100,29 @@ header {
     margin-right: 0.2rem;
 }
 
+@keyframes skeletonLoading {
+    0% {
+        background-color: hsl(0, 0%, 93%);
+    }
+
+    100% {
+        background-color: hsl(0, 0%, 76%);
+    }
+}
+
 .right>.user,
 .userImage {
     border-radius: 50%;
-    background-color: gray;
     height: 50px;
     aspect-ratio: 1/1;
     overflow: hidden;
     padding: 0.3rem;
     position: relative;
+    animation: skeletonLoading 1s linear alternate infinite;
+}
+
+.right>.user {
+    animation: none;
 }
 
 .right>.user>img,
@@ -107,6 +162,7 @@ main section:last-child {
 
 h1 {
     text-align: center;
+    color: var(--h1);
 }
 
 
@@ -120,18 +176,21 @@ h1 {
     top: 0;
     transform: translateY(-50%);
     left: 10px;
-    background-color: white;
+    background-color: var(--body-color);
     padding: 0 0.3rem;
     color: rgb(136, 136, 136);
+
 }
 
 input[type="email"],
 input[type="text"] {
     border-radius: 5px;
     outline: none;
-    padding: 0.5rem 1rem;
+    padding: 0.7rem 1rem;
     border: 3px solid #ccc;
     width: 100%;
+    background-color: var(--body-color);
+    color: var(--h1);
 }
 
 input[type="email"]:focus,
@@ -227,7 +286,7 @@ input[type="submit"]:hover {
 .image-preview {
     height: 7rem;
     width: 7rem;
-    border: 5px solid #adadad;
+    border: 5px solid var(--image-preview-border-color);
     border-radius: 50%;
     object-fit: cover;
 }
@@ -243,6 +302,7 @@ form {
 
 main section:last-child h2 {
     margin-bottom: 1rem;
+    color: var(--h1);
 }
 
 table {
@@ -255,17 +315,22 @@ th,
 tr,
 td {
     border-collapse: collapse;
-    border: 1px solid gray;
+    border: var(--table-border);
 }
 
 td {
     padding: 1rem;
     height: max-content;
+    background-color: var(--header-color);
 }
 
 th {
     background-color: rgb(102, 212, 255);
     padding: 1rem;
+}
+
+table a {
+    color: var(--table-a-color);
 }
 
 .options {
@@ -317,7 +382,7 @@ th {
     align-items: center;
     gap: 1rem;
     left: 50%;
-    transform: translate(-50%, -100%);
+    transform: translate(-50%, -101%);
     overflow: hidden;
     transition: top 1s ease;
 }
@@ -403,4 +468,26 @@ th {
     100% {
         transform: rotate(-360deg);
     }
+}
+
+
+.mode img {
+    width: 2rem;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.mode {
+    width: 3rem;
+    border-radius: 20px;
+    height: 2.2rem;
+    padding: 0.5rem;
+    margin-right: 1rem;
+    border: 2px solid black;
+    filter: var(--invert);
+}
+
+.mode:hover {
+    cursor: pointer;
 }

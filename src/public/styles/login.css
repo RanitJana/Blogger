@@ -7,20 +7,60 @@
     overflow-wrap: anywhere;
 }
 
+[data-theme="light"] {
+    --header-color: white;
+    --box-color: rgba(204, 204, 204, 0.178);
+    --box-border-bottom: 1px solid #ccc;
+    --body-color: white;
+    --header-border-bottom: 5px solid #ccc;
+    --invert: invert(0%);
+    --username: rgb(97, 97, 97);
+    --h1: black;
+    --like-comment: rgb(97, 97, 97);
+    --form-border-top: 10px solid purple;
+    --form-shadow: 1px 1px 10px 1px gray;
+    --form-border: 3px solid #ccc;
+    --submit-color: rgb(0, 148, 207);
+    --submit-hover-color: rgb(0, 127, 178);
+    --link-color: purple;
+}
+
+
+[data-theme="dark"] {
+
+    --header-color: #1E1E1E;
+    --box-color: #1E1E1E;
+    --box-border-bottom: none;
+    --body-color: #121212;
+    --header-border-bottom: 5px solid #121212;
+    --invert: invert(100%);
+    --username: rgb(142, 142, 142);
+    --h1: white;
+    --like-comment: rgb(235, 235, 235);
+    --form-border-top: 10px solid #ccc;
+    --form-shadow: none;
+    --form-border: none;
+    --submit-color: rgb(78, 78, 78);
+    --submit-hover-color: rgb(66, 66, 66);
+    --link-color: white;
+}
+
 body {
     min-height: 100dvh;
     display: grid;
     place-items: center;
     padding: 1rem;
+    background-color: var(--body-color);
 }
 
 form {
-    border-top: 10px solid purple;
+    border-top: var(--form-border-top);
     max-width: 400px;
     width: 100%;
     padding: 2rem 1.5rem;
     border-radius: 3px;
-    box-shadow: 1px 1px 10px 1px gray;
+    background-color: var(--header-color);
+    box-shadow: var(--form-shadow);
 }
 
 .content {
@@ -33,33 +73,39 @@ form {
     top: 0;
     transform: translateY(-50%);
     left: 10px;
-    background-color: white;
+    background-color: var(--body-color);
     padding: 0 0.3rem;
     color: rgb(136, 136, 136);
 }
 
 h1 {
     text-align: center;
+    color: var(--h1);
 }
 
 input[type="email"],
+input[type="text"],
 input[type="password"] {
     border-radius: 5px;
     outline: none;
-    padding: 0.5rem 1rem;
-    border: 3px solid #ccc;
+    padding: 0.8rem 1rem;
+    border: var(--form-border);
     width: 100%;
+    background-color: var(--body-color);
+    color: var(--h1);
 }
 
+input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
+input[type="text"]:user-valid,
 input[type="email"]:user-valid,
 input[type="password"]:user-valid {
     border-color: skyblue;
 }
 
 input[type="submit"] {
-    background-color: rgb(0, 148, 207);
+    background-color: var(--submit-color);
     font-size: large;
     font-weight: bold;
     color: white;
@@ -70,7 +116,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: rgb(0, 127, 178);
+    background-color: var(--submit-hover-color);
     cursor: pointer;
 }
 
@@ -104,4 +150,9 @@ input[type="submit"]:hover {
     border-radius: 3px;
     padding: 0.5rem 1rem;
     color: white;
+}
+
+.register {
+    font-size: 1rem;
+    color: var(--link-color);
 }

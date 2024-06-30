@@ -7,12 +7,54 @@
     overflow-wrap: anywhere;
 }
 
-body {
-    position: relative;
+:root {
+    --header-color: white;
+    --box-border-bottom: 1px solid #ccc;
+    --body-color: white;
+    --header-border-bottom: 5px solid #ccc;
+    --invert: invert(0%);
+    --username: rgb(97, 97, 97);
+    --h1: black;
+    --like-comment: rgb(97, 97, 97);
+    --contentPopularity-box-shadow: 1px 1px 5px 2px #ccc;
+    --like-comment-background-color: transparent;
+    --like-comment-padding: 0.5rem;
+    --like-comment-border-radius: 0;
+    --comment-area-h3: #ccc;
+    --user-span: white;
 }
 
+
+[data-theme="dark"] {
+
+    --header-color: #1E1E1E;
+    --box-border-bottom: none;
+    --body-color: #121212;
+    --header-border-bottom: 5px solid #121212;
+    --invert: invert(100%);
+    --username: rgb(168, 168, 168);
+    --h1: white;
+    --like-comment: rgb(235, 235, 235);
+    --contentPopularity-box-shadow: none;
+    --like-comment-background-color: rgb(207, 207, 207);
+    --like-comment-padding: 0.5rem 1rem;
+    --like-comment-border-radius: 10px;
+    --comment-area-h3: #1E1E1E;
+    --user-span: #3d3d3d;
+}
+
+body {
+    position: relative;
+    background-color: var(--body-color);
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+
 header {
-    background-color: rgb(255, 255, 255);
+    background-color: var(--header-color);
     position: sticky;
     top: 0;
     width: 100%;
@@ -20,7 +62,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    border-bottom: 1px solid #ccc;
+    border-bottom: var(--header-border-bottom);
     z-index: 10;
 }
 
@@ -47,7 +89,8 @@ header {
     color: black;
     display: flex;
     align-items: center;
-    margin-right: 2rem;
+    margin-right: 1rem;
+    filter: var(--invert);
 }
 
 .right .write:hover span {
@@ -92,12 +135,11 @@ main {
 .content {
     max-width: 750px;
     width: 100%;
-    /* padding: 2rem; */
-    /* background-color: rgba(204, 204, 204, 0.178); */
 }
 
 .content h1 {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--h1);
 }
 
 .owner {
@@ -127,7 +169,7 @@ main {
 }
 
 .owner .info .name a {
-    color: rgb(97, 97, 97);
+    color: var(--username);
 }
 
 .owner .info .name a:hover {
@@ -135,7 +177,7 @@ main {
 }
 
 .owner .info .date {
-    color: rgb(97, 97, 97);
+    color: var(--username);
 }
 
 .coverImage {
@@ -151,6 +193,13 @@ main {
     margin-top: 3rem;
     line-height: 2rem;
     font-size: 1.2rem;
+    color: var(--h1);
+}
+
+code {
+    color: black;
+    padding: 0.2rem;
+    border-radius: 2px;
 }
 
 .text img {
@@ -174,6 +223,7 @@ main {
     background-color: black;
     border-radius: 50%;
     position: relative;
+    filter: var(--invert);
 }
 
 .ending::before {
@@ -199,18 +249,22 @@ main {
 }
 
 .contentPopularity {
-    box-shadow: 1px 1px 5px 2px #ccc;
+    box-shadow: var(--contentPopularity-box-shadow);
     border-radius: 10px;
     display: flex;
     align-items: center;
     padding: 0.2rem 1rem;
     gap: 1rem;
     margin-top: 1rem;
+    filter: var(--invert);
 }
 
 .contentPopularity div {
     text-decoration: none;
     color: black;
+    padding: var(--like-comment-padding);
+    background-color: var(--like-comment-background-color);
+    border-radius: var(--like-comment-border-radius);
 }
 
 .contentPopularity>div:hover {
@@ -223,7 +277,7 @@ main {
     align-items: center;
     gap: 0.2rem;
     height: 100%;
-    padding: 0.5rem;
+
 }
 
 .likes img,
@@ -262,10 +316,11 @@ ul {
 }
 
 .commentArea>h3 {
-    background-color: #ccc;
+    background-color: var(--comment-area-h3);
     margin-top: 1rem;
     padding: 1rem;
     border-left: 5px solid gray;
+    color: var(--h1);
 }
 
 .currentUserComment {
@@ -303,6 +358,7 @@ ul {
     height: 3rem;
     border-radius: 5px;
     padding: 0.5rem;
+    filter: var(--invert);
 }
 
 .currentUserComment .send:active {
@@ -335,10 +391,11 @@ ul {
 }
 
 .userComment {
-    background-color: #ebebeb;
+    background-color: var(--comment-area-h3);
     padding: 0.5em;
     border-radius: 8px;
     max-width: 100%;
+    color: var(--h1);
 }
 
 .userComment .userName {
@@ -347,7 +404,7 @@ ul {
 }
 
 .userComment span {
-    background-color: white;
+    background-color: var(--user-span);
     display: block;
     width: 100%;
     padding: 0.5rem;
@@ -367,6 +424,7 @@ ul {
     box-shadow: 1px 1px 5px 1px gray;
     width: 100%;
     display: none;
+    filter: var(--invert);
 }
 
 .more:hover {
@@ -376,4 +434,31 @@ ul {
 .more:active {
     background-color: #f6f6f6;
     scale: 0.98;
+}
+
+textarea {
+    background-color: filter(var(--h1));
+    color: var(--h1);
+}
+
+
+.mode img {
+    width: 2rem;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.mode {
+    width: 3rem;
+    border-radius: 20px;
+    height: 2.2rem;
+    padding: 0.5rem;
+    margin-right: 1rem;
+    border: 2px solid black;
+    filter: var(--invert);
+}
+
+.mode:hover {
+    cursor: pointer;
 }
