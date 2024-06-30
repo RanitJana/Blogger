@@ -36,11 +36,18 @@
     </form>
 
     <script>
-        document.querySelector('.login').addEventListener("click", e => {
+        function block() {
             document.querySelector('.blockRequest').style.transform = 'translateY(0%)';
+        }
+        document.querySelector('.login').addEventListener("click", e => {
+            let ans = true;
+            document.querySelectorAll('input').forEach(val => {
+                if (!val.value) ans = false;
+            })
+            if (ans) block();
         })
         document.querySelector(".register").addEventListener("click", e => {
-            document.querySelector('.blockRequest').style.transform = 'translateY(0%)';
+            block();
         })
     </script>
 </body>

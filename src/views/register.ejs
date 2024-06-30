@@ -46,8 +46,15 @@
             <input type="submit" class="register" value="Register"><br>
     </form>
     <script>
-        document.querySelector('.register').addEventListener("click", e => {
+        function block() {
             document.querySelector('.blockRequest').style.transform = 'translateY(0%)';
+        }
+        document.querySelector('.register').addEventListener("click", e => {
+            let ans = true;
+            document.querySelectorAll('input').forEach(val => {
+                if (!val.value) ans = false;
+            })
+            if (ans) block();
         })
     </script>
 </body>
