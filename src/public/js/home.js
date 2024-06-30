@@ -39,3 +39,17 @@ document.addEventListener('DOMContentLoaded', () => {
 mode.addEventListener("click", function () {
     toggleTheme();
 })
+
+let Blogger = document.querySelector("header .left h1");
+
+function textAdjust() {
+    if (window.innerWidth < 345) {
+        Blogger.innerHTML = "B";
+    }
+    else {
+        Blogger.innerHTML = "Blogger";
+    }
+}
+
+window.addEventListener('resize', () => textAdjust());
+window.addEventListener("DOMContentLoaded", () => textAdjust());

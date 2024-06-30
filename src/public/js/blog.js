@@ -175,11 +175,6 @@ more.addEventListener("click", async function () {
 })
 
 
-// document.querySelector(".comment").addEventListener("click", async () => {
-
-//     commentContent.classList.toggle("show");
-// })
-
 function resize(element) {
     element.style.height = 'auto';
     element.style.height = element.scrollHeight + 'px';
@@ -231,3 +226,17 @@ document.addEventListener('DOMContentLoaded', () => {
 mode.addEventListener("click", function () {
     toggleTheme();
 })
+
+let Blogger = document.querySelector("header .left h1");
+
+function textAdjust() {
+    if (window.innerWidth < 345) {
+        Blogger.innerHTML = "B";
+    }
+    else {
+        Blogger.innerHTML = "Blogger";
+    }
+}
+
+window.addEventListener('resize', () => textAdjust());
+window.addEventListener("DOMContentLoaded", () => textAdjust());
