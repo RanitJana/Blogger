@@ -17,20 +17,32 @@
 </head>
 
 <body>
+    <div class="blockRequest">
+        <img src="/images/load-icon-png-7963.png" alt="Loading..." decoding="async">
+    </div>
     <form action="/login" method="post">
         <h1>Log in</h1>
         <%- include("./messages/message.ejs") -%>
-        <div class="content">
-            <input type="email" name="email" id="email" required>
-            <span>email</span>
-        </div>
-        <div class="content">
-            <input type="password" name="password" id="password" required>
-            <span>password</span>
-        </div>
-        <input type="submit" value="Log in"><br>
-        <a href="/register" class="register">New in Blogger?</a>
+            <div class="content">
+                <input type="email" name="email" id="email" required>
+                <span>email</span>
+            </div>
+            <div class="content">
+                <input type="password" name="password" id="password" required>
+                <span>password</span>
+            </div>
+            <input type="submit" class="login" value="Log in"><br>
+            <a href="/register" class="register">New in Blogger?</a>
     </form>
+
+    <script>
+        document.querySelector('.login').addEventListener("click", e => {
+            document.querySelector('.blockRequest').style.transform = 'translateY(0%)';
+        })
+        document.querySelector(".register").addEventListener("click", e => {
+            document.querySelector('.blockRequest').style.transform = 'translateY(0%)';
+        })
+    </script>
 </body>
 
 </html>

@@ -17,31 +17,39 @@
 </head>
 
 <body>
+    <div class="blockRequest">
+        <img src="/images/load-icon-png-7963.png" alt="Loading..." decoding="async">
+    </div>
     <form action="/register" method="post">
         <h1>Register</h1>
         <%- include("./messages/message.ejs") -%>
-        <div class="content">
-            <input type="text" name="fullName" required id="fullName">
-            <span>full name</span>
-        </div>
-        <div class="content">
-            <input type="text" name="userName" required id="userName">
-            <span>user name</span>
-        </div>
-        <div class="content">
-            <input type="email" name="email" id="email" required>
-            <span>email</span>
-        </div>
-        <div class="content">
-            <input type="password" name="password" id="password" required>
-            <span>password</span>
-        </div>
-        <div class="content">
-            <input type="password" name="confirmPassword" id="confirmPassword" required>
-            <span>confirm password</span>
-        </div>
-        <input type="submit" value="Register"><br>
+            <div class="content">
+                <input type="text" name="fullName" required id="fullName">
+                <span>full name</span>
+            </div>
+            <div class="content">
+                <input type="text" name="userName" required id="userName">
+                <span>user name</span>
+            </div>
+            <div class="content">
+                <input type="email" name="email" id="email" required>
+                <span>email</span>
+            </div>
+            <div class="content">
+                <input type="password" name="password" id="password" required>
+                <span>password</span>
+            </div>
+            <div class="content">
+                <input type="password" name="confirmPassword" id="confirmPassword" required>
+                <span>confirm password</span>
+            </div>
+            <input type="submit" class="register" value="Register"><br>
     </form>
+    <script>
+        document.querySelector('.register').addEventListener("click", e => {
+            document.querySelector('.blockRequest').style.transform = 'translateY(0%)';
+        })
+    </script>
 </body>
 
 </html>

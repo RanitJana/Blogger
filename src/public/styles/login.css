@@ -156,3 +156,34 @@ input[type="submit"]:hover {
     font-size: 1rem;
     color: var(--link-color);
 }
+
+
+.blockRequest {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.647);
+    height: 100dvh;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+    transform: translateY(-100%);
+}
+
+.blockRequest img {
+    width: 2rem;
+    filter: invert(100%);
+    animation: rotation 2s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0%);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
