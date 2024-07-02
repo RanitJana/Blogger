@@ -19,8 +19,6 @@ async function getAllRandomBlogs() {
 
 const displayHome = async function (req, res) {
 
-    res.set('Cache-Control', 'public, max-age=86400');
-
     let blog = await getAllRandomBlogs();
     let likes = await likeSchema.find();
 
@@ -44,9 +42,6 @@ const displayHome = async function (req, res) {
 }
 
 const displayBlog = async function (req, res) {
-
-    res.set('Cache-Control', 'public, max-age=86400')
-
 
     try {
 

@@ -233,9 +233,6 @@ const updateProfile = async function (req, res) {
 
 const displayProfile = async function (req, res, next) {
 
-    res.set('Cache-Control', 'public, max-age=86400')
-
-
     const decoded = await jwt.verify(req.cookies?.accessToken, process.env.ACCESS_TOKEN_SECRET);
     const user = await userSchema.findOne({ email: decoded.email });
 

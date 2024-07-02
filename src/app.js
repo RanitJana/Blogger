@@ -32,6 +32,8 @@ app.use(express.json({ limit: "20kb" }))
 
 app.use(async (req, res, next) => {
 
+    res.set('Cache-Control', 'public, max-age=86400')
+
     res.locals.success = req.flash("success", "");
     res.locals.fail = req.flash("fail", "");
 
