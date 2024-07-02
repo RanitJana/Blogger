@@ -1,8 +1,8 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const { postBlog } = require("../controllers/user.controller.js");
-const upload = require("../utils/multer.js");
-const { validUser } = require("../middlewares/auth.middleware.js");
+import { postBlog } from "../controllers/user.controller.js";
+import upload from "../utils/multer.js";
+import { validUser } from "../middlewares/auth.middleware.js";
 
 router
     .get('/', validUser, (req, res) => {
@@ -10,4 +10,4 @@ router
     })
     .post('/', validUser, upload.single("file"), postBlog)
 
-module.exports = router;
+export default router;

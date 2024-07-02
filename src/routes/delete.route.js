@@ -1,10 +1,10 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
 
-const { validUser } = require("../middlewares/auth.middleware.js");
-const { deleteContent } = require("../controllers/user.controller.js");
+import { validUser } from "../middlewares/auth.middleware.js";
+import { deleteContent } from "../controllers/user.controller.js";
 
 router
     .get("/", validUser, deleteContent);
 
-module.exports = router;
+export default router;

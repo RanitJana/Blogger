@@ -1,5 +1,5 @@
-const userSchema = require("../models/user.model.js");
-const jwt = require("jsonwebtoken");
+import userSchema from "../models/user.model.js";
+import jwt from "jsonwebtoken";
 
 const validUser = async function (req, res, next) {
     try {
@@ -29,6 +29,6 @@ const validUser = async function (req, res, next) {
 }
 
 
-module.exports = {
+export {
     validUser
 }

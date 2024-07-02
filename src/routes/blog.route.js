@@ -1,10 +1,10 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const { displayBlog } = require("../controllers/public.controller.js");
-const { sendComments } = require("../controllers/public.controller.js");
+import { displayBlog } from "../controllers/public.controller.js";
+import { sendComments } from "../controllers/public.controller.js";
 
-const like = require("./like.route.js");
-const comment = require("./comment.route.js");
+import like from "./like.route.js";
+import comment from "./comment.route.js";
 
 
 router
@@ -13,4 +13,4 @@ router
     .get("/", displayBlog)
     .post("/", sendComments)
 
-module.exports = router;
+export default router;

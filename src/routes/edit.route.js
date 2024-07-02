@@ -1,10 +1,10 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
 
-const { validUser } = require("../middlewares/auth.middleware.js");
-const { editContent } = require("../controllers/user.controller.js");
-const blogSchema = require("../models/blog.model.js");
-const url = require("url");
+import { validUser } from "../middlewares/auth.middleware.js";
+import { editContent } from "../controllers/user.controller.js";
+import blogSchema from "../models/blog.model.js";
+import url from "url";
 
 router
     .get("/", validUser, async (req, res) => {
@@ -15,9 +15,9 @@ router
         let blog = await blogSchema.findById(blogId);
 
         res.locals.blog = blog;
-        
+
         res.render("edit");
     })
     .post("/", validUser, editContent)
 
-module.exports = router;
+export default router;

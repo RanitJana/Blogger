@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const { DB_NAME } = require('../contants.js');
+import mongoose from "mongoose";
+import { DB_NAME } from '../contants.js';
 
 const connectDB = async function () {
     try {
@@ -12,4 +12,4 @@ const connectDB = async function () {
     }
 }
 
-module.exports = connectDB;
+export default connectDB;

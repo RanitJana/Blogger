@@ -1,14 +1,14 @@
-const userSchema = require("../models/user.model.js");
-const blogSchema = require("../models/blog.model.js");
-const likeSchema = require("../models/like.model.js");
-const commentSchema = require("../models/comment.model.js");
+import userSchema from "../models/user.model.js";
+import blogSchema from "../models/blog.model.js";
+import likeSchema from "../models/like.model.js";
+import commentSchema from "../models/comment.model.js";
 
-const { uploadAvater, uploadCoverImage, deleteImage } = require("../utils/cloudinary.js");
+import { uploadAvater, uploadCoverImage, deleteImage } from "../utils/cloudinary.js";
 
-const url = require("url");
-const jwt = require("jsonwebtoken");
-const path = require("path");
-const fs = require("fs");
+import url from "url";
+import jwt from "jsonwebtoken";
+import path from "path";
+import fs from "fs";
 
 async function generateAccessTokenAndRefreshToken(user) {
     let accessToken = await user.generateAccessToken();
@@ -233,6 +233,9 @@ const updateProfile = async function (req, res) {
 
 const displayProfile = async function (req, res, next) {
 
+    res.set('Cache-Control', 'public, max-age=86400')
+
+
     const decoded = await jwt.verify(req.cookies?.accessToken, process.env.ACCESS_TOKEN_SECRET);
     const user = await userSchema.findOne({ email: decoded.email });
 
@@ -444,7 +447,7 @@ const commentContent = async function (req, res, next) {
     });
 }
 
-module.exports = {
+export {
     userLogin,
     userRegister,
     postBlog,

@@ -1,8 +1,8 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
 
-const { commentContent } = require("../controllers/user.controller");
+import { commentContent } from "../controllers/user.controller.js";
 
 router.post("/", commentContent);
 
-module.exports = router;
+export default router;

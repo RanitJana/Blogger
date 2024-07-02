@@ -1,8 +1,8 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
 
-const { displayWriter } = require("../controllers/public.controller.js");
+import { displayWriter } from "../controllers/public.controller.js";
 
 router.get("/", displayWriter)
 
-module.exports = router;
+export default router;

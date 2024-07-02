@@ -1,13 +1,19 @@
-const express = require("express");
-const path = require("path");
+import express from "express";
+import path from "path";
 const app = express();
-const cookieParser = require("cookie-parser");
-const session = require("express-session");
-const flash = require("connect-flash");
-const jwt = require("jsonwebtoken");
-const cors = require("cors");
+import cookieParser from "cookie-parser";
+import session from "express-session";
+import flash from "connect-flash";
+import jwt from "jsonwebtoken";
+import cors from "cors";
+import compression from "compression";
+
+import { fileURLToPath } from "url"
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 //basic configuration
+app.use(compression());
 app.use(express.static(path.join(__dirname, "./public")));
 app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
@@ -42,12 +48,12 @@ app.use(async (req, res, next) => {
 
 //routes
 
-const home = require("./routes/home.route.js");
-const register = require("./routes/register.route.js");
-const login = require("./routes/login.route.js");
-const post = require("./routes/post.route.js");
-const blog = require("./routes/blog.route.js");
-const user = require("./routes/user.route.js");
+import home from "./routes/home.route.js";
+import register from "./routes/register.route.js";
+import login from "./routes/login.route.js";
+import post from "./routes/post.route.js";
+import blog from "./routes/blog.route.js";
+import user from "./routes/user.route.js";
 
 app.use("/", home);
 app.use("/register", register);
@@ -57,4 +63,4 @@ app.use("/blog", blog);
 app.use("/user", user);
 
 
-module.exports = app;
+export default app;

@@ -1,4 +1,4 @@
 const DB_NAME = "Blog_app";
-module.exports = {
+export {
     DB_NAME
 }

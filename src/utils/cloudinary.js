@@ -1,4 +1,4 @@
-const { v2: cloudinary, UploadStream } = require("cloudinary");
+import { v2 as cloudinary } from "cloudinary";
 
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
@@ -32,7 +32,7 @@ const deleteImage = async (publicId) => {
     });
 };
 
-module.exports = {
+export {
     uploadAvater,
     uploadCoverImage,
     deleteImage

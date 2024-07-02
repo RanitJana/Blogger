@@ -1,8 +1,8 @@
-const { Schema, model } = require("mongoose");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const fs = require("fs");
-const path = require("path");
+import { Schema, model } from "mongoose";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import fs from "fs";
+import path from "path";
 
 const userSchema = new Schema({
     userName: {
@@ -73,4 +73,4 @@ userSchema.methods.generateRefreshToken = async function () {
     )
 }
 
-module.exports = model('User', userSchema)
+export default model('User', userSchema)

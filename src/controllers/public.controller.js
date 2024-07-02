@@ -1,10 +1,10 @@
-const blogSchema = require("../models/blog.model.js");
-const userSchema = require("../models/user.model.js");
-const likeSchema = require("../models/like.model.js");
-const commentSchema = require("../models/comment.model.js");
+import blogSchema from "../models/blog.model.js";
+import userSchema from "../models/user.model.js";
+import likeSchema from "../models/like.model.js";
+import commentSchema from "../models/comment.model.js";
 
-const url = require("url");
-const jwt = require("jsonwebtoken");
+import url from "url";
+import jwt from "jsonwebtoken";
 
 async function getAllRandomBlogs() {
     try {
@@ -18,6 +18,8 @@ async function getAllRandomBlogs() {
 }
 
 const displayHome = async function (req, res) {
+
+    res.set('Cache-Control', 'public, max-age=86400');
 
     let blog = await getAllRandomBlogs();
     let likes = await likeSchema.find();
@@ -42,6 +44,9 @@ const displayHome = async function (req, res) {
 }
 
 const displayBlog = async function (req, res) {
+
+    res.set('Cache-Control', 'public, max-age=86400')
+
 
     try {
 
@@ -151,7 +156,7 @@ const sendComments = async function (req, res) {
 
 }
 
-module.exports = {
+export {
     displayHome,
     displayBlog,
     displayWriter,

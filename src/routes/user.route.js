@@ -1,13 +1,13 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const upload = require("../utils/multer.js");
+import upload from "../utils/multer.js";
 
-const { validUser } = require("../middlewares/auth.middleware.js");
-const { updateProfile, displayProfile, userLogOut } = require("../controllers/user.controller.js");
+import { validUser } from "../middlewares/auth.middleware.js";
+import { updateProfile, displayProfile, userLogOut } from "../controllers/user.controller.js";
 
-const edit = require("./edit.route.js");
-const erase = require("./delete.route.js");
-const writer = require("./writer.route.js");
+import edit from "./edit.route.js";
+import erase from "./delete.route.js";
+import writer from "./writer.route.js";
 
 router
     .use("/edit", edit)
@@ -31,4 +31,4 @@ router
     .post("/update-user", upload.single("file"), updateProfile)
     .post("/log-out", validUser, userLogOut)
 
-module.exports = router;
+export default router;
