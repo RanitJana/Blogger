@@ -3,6 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+console.log(__dirname);
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {

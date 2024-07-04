@@ -9,6 +9,9 @@ import url from "url";
 import jwt from "jsonwebtoken";
 import path from "path";
 import fs from "fs";
+import { fileURLToPath } from "url"
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 async function generateAccessTokenAndRefreshToken(user) {
     let accessToken = await user.generateAccessToken();
