@@ -199,6 +199,10 @@ main {
     animation: skeletonLoading 1s linear alternate;
 }
 
+.middle .bottom img {
+    display: none;
+}
+
 .contentImage img {
     width: 100%;
     height: 100%;
